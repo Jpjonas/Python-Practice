@@ -4,11 +4,11 @@
 
 def nombre_de_la_funcion(argumento1, argumento2):
     """
-	Representación de los datos ¿Cómo se representa cada tipo de 
+	Representación de los datos ¿Cómo se representa cada tipo de
 	dato?
 	Signatura:
         nombre_de_la_funcon : tipo_argumento1 -> tipo_argumento2 -> tipo_valor_retorno
-        
+
 	Declaración de propósito. ¿Qué hace la función 'nombre_de_la_funcion'?
 
 	Ejemplos:
