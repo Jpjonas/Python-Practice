@@ -5,6 +5,9 @@ Links:
 * Recipe:
 http://comunidades.campusvirtualunr.edu.ar/pluginfile.php/265841/mod_resource/content/0/LaRecetaEnPython.pdf
 
+* Pytest:
+http://comunidades.campusvirtualunr.edu.ar/pluginfile.php/224176/mod_resource/content/1/PII_2016_Pytest.pdf
+
 * Práctica 1:
 http://comunidades.campusvirtualunr.edu.ar/pluginfile.php/219498/mod_resource/content/2/lab-practica1.pdf
 * Práctica 2:
