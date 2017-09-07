@@ -2,6 +2,8 @@
 
 Links: 
 
+* Learn Python: https://learnxinyminutes.com/docs/python/
+
 * Recipe:
 http://comunidades.campusvirtualunr.edu.ar/pluginfile.php/265841/mod_resource/content/0/LaRecetaEnPython.pdf
 
