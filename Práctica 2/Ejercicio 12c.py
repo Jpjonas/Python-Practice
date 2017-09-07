@@ -4,7 +4,8 @@ def login():
     Representamos contraseñas con números
 
     Signatura:
-    contaNumeros: void -> void
+    contaNumeros: void -> boolean
+    Devuelve si el usuario ingresso la contraseña correcta
 
     Declaracion de propósito:
     La función contiene una contraseña inventada,
@@ -21,6 +22,10 @@ def login():
     while(c!=x)and(t<3):
         x=input("Ingresse la contraseña: ")
         t=t+1
-        
+
+    if(t<3):
+        return(True)
+    else:
+        return(False)
 
 login()
