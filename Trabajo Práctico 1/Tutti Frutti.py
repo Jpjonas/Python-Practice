@@ -5,14 +5,14 @@ import string
 def menu():
     n=1 # Número de jugadores
     o=0
-    while(o!=3)
+    while(o!=3):
         print("[1] Jugadores")
         print("[2] Jugar")
         print("[3] Salir")
         o=int(input("Selecione una opción: "))
         if(o==1):
             n=verificaJugadores()
-        if(0==2):
+        if(o==2):
             jugar(n)
 
 def verificaJugadores():
@@ -23,18 +23,23 @@ def verificaJugadores():
 #n->Número de jugadores
 def jugar(n):
     # Letra generada al azar
-    l=random.choice(string.ascii_letters)
-    print("La letra es: ",l)
+    l=random.choice(string.ascii_uppercase)
+    print("\nLa letra es: ",l)
 
-    matriz = [] # lista vacia
-	for i in range(0,n):
-        # cria a linea i
-        linha = [] # lista vacia
-	        for j in range(0,7):
+    matriz=[]
+    for x in range(0,n):
+        print("\nJUGADOR ",x)
+        linea=[]
+        for y in range(0,7):
+            t="0"
+            while(t[0].upper()!=l):
+                t=input("Ingresse la ",...,": ")
+            linea.append(t)
+        matriz.append(linea)
 
-            linha.append(input(""))
 
-	        matriz.append(linha)
+
+
 
 
 
