@@ -1,9 +1,10 @@
 #Bibliotecas
 import random
 import string
+import pprint
 
 def menu():
-    n=1 # Número de jugadores
+    n=2 # Número de jugadores
     o=0
     while(o!=3):
         print("[1] Jugadores")
@@ -26,23 +27,38 @@ def jugar(n):
     l=random.choice(string.ascii_uppercase)
     print("\nLa letra es: ",l)
 
-    matriz=[]
+    #Matriz de palavras de los jugadores
+    matrizPalavras=[]
+    #Lista de puntos de los jugadores
+    listaPuntos=[]
+    #Impresion de la lista de puntos de los jugadores
+    for puntos in range(listaPuntos):
+        pprint.pprint(listaPuntos)
+        #verificar si la pontuacion es mayor que 200
+
+    #Loops para ingresar las palabras de cada letra
     for x in range(0,n):
         print("\nJUGADOR ",x)
         linea=[]
         for y in range(0,7):
-            t="0"
-            while(t[0].upper()!=l):
-                t=input("Ingresse la ",...,": ")
+            t="0" #Caracter que no es una letra
+            while(t[0].upper()!=l): #Verificacion de la letra inicial de la palabra ingresada
+                t=input("Ingresse la palabra: ")
             linea.append(t)
-        matriz.append(linea)
+        matrizPalavras.append(linea)
+
+
+    #impresion de la matriz(verificar)
+    pprint.pprint(matriz)
+
+def contaPuntos(matrizPalavras):
+    listaPuntos=[]
+    ##Contagen de los puntos de cada jugadores
+    #Sumando los puntos otenidos antes
+
+    return listaPuntos
 
 
 
-
-
-
-
-
-
+#Llamada del juego en el terminal
 menu()
