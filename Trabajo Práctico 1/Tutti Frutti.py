@@ -2,6 +2,7 @@
 import random
 import string
 import pprint
+import numpy as np
 
 def menu():
     n=2 # Número de jugadores
@@ -16,13 +17,17 @@ def menu():
         if(o==2):
             jugar(n)
 
+
 def verificaJugadores():
-    #verificar si é um número y si esta dentro do possivel
-    return int(input("Ingrese la cantidad de jugadores[1,2,3,4,5]: "))
+    #verificar si é um número y si esta dentro do p6ossivel
+    try:
+        return int(input("Ingrese la cantidad de jugadores[1,2,3,4,5]: "))
+    except:
+        return verificaJugadores()
+        pass
 
 
-#n->Número de jugadores
-def jugar(n):
+def jugar(n):#n->Número de jugadores
     # Letra generada al azar
     l=random.choice(string.ascii_uppercase)
     print("\nLa letra es: ",l)
@@ -34,31 +39,55 @@ def jugar(n):
     #Impresion de la lista de puntos de los jugadores
     for puntos in range(listaPuntos):
         pprint.pprint(listaPuntos)
-        #verificar si la pontuacion es mayor que 200
+        #Verificar si la pontuacion es mayor que 200
 
     #Loops para ingresar las palabras de cada letra
     for x in range(0,n):
         print("\nJUGADOR ",x)
         linea=[]
         for y in range(0,7):
-            t="0" #Caracter que no es una letra
-            while(t[0].upper()!=l): #Verificacion de la letra inicial de la palabra ingresada
-                t=input("Ingresse la palabra: ")
-            linea.append(t)
+            linea.append(recibePalabra(y))
         matrizPalavras.append(linea)
 
+    contaPuntos(matriz)
 
-    #impresion de la matriz(verificar)
+    #Impresion de la matriz(verificar)
     pprint.pprint(matriz)
 
-def contaPuntos(matrizPalavras):
+
+def recibePalabra(n):#n->la categoria conforme la posicion de la matriz
+    c=""#Categorias
+    if(n==0):
+        c="Ingrese el nombre de uma persona: "
+    if(n==1):
+        c="Ingrese una color: "
+    if(n==2):
+        c="Ingrese un animal: "
+    if(n==3):
+        c="Ingrese una comida: "
+    if(n==4):
+        c="Ingrese una flor: "
+    if(n==5):
+        c="Ingrese una fruta: "
+    if(n==6):
+        c="Ingrese un país: "
+    t=input(c)
+    if(t[0].upper()!=l):#Verificacion de la letra inicial de la palabra ingresada
+        t=""
+
+
+def contaPuntos(matrizPalavras):#contagen de los puntos
     listaPuntos=[]
-    ##Contagen de los puntos de cada jugadores
-    #Sumando los puntos otenidos antes
+    #Contagen de los puntos de cada jugadores
+    #Sumando los puntos obtenidos antes
+    for x in range(matrizPalavras):
+        for y in range(x):
+            for i in range(matrizPalavras):
+                for j in range(i):
+                    print(a)
+
 
     return listaPuntos
 
 
-
-#Llamada del juego en el terminal
-menu()
+menu()#llamada del juego en el terminal
