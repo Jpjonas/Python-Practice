@@ -1,79 +1,78 @@
 #Bibliotecas
 import random
 import string
-import pprint
+import os
 import numpy as np
+#intalar biblioteca numpy
+#instalar biblioteca pytest
+
 
 def menu():
-    n=2 # Número de jugadores
-    o=0
-    while(o!=3):
-        print("[1] Jugadores")
-        print("[2] Jugar")
-        print("[3] Salir")
-        o=int(input("Selecione una opción: "))
-        if(o==1):
-            n=verificaJugadores()
-        if(o==2):
-            jugar(n)
+    numJugadores = 2
+    opcion = 0
+    while(opcion!=3):
+        os.system('clear')
+        print '\nTUTTI FRUTTI'
+        print '\n',numJugadores,' Jugadores'
+        print '\n[1] Cantidad de Jugadores'
+        print '[2] Jugar'
+        print '[3] Salir'
+        opcion=int(input("Selecione una opcion: "))
+        if(opcion==1):
+            numJugadores = cambiaNumeroJugadores()
+        if(opcion==2):
+            jugar(numJugadores)
+        if(opcion==3):
+            quit()
 
 
-def verificaJugadores():
-    #verificar si é um número y si esta dentro do p6ossivel
+def cambiaNumeroJugadores():
+    numJugadores=2
     try:
-        return int(input("Ingrese la cantidad de jugadores[1,2,3,4,5]: "))
+        numJugadores = int(input('\nIngrese la cantidad de jugadores[1,2,3,4,5]: '))
+        if(numJugadores<1)or(numJugadores>5):
+            print '\nCantidad invalida!'
+            return cambiaNumeroJugadores()
     except:
-        return verificaJugadores()
+        print '\nCantidad invalida!'
+        return cambiaNumeroJugadores()
         pass
+    return numJugadores
 
 
-def jugar(n):#n->Número de jugadores
-    # Letra generada al azar
-    l=random.choice(string.ascii_uppercase)
-    print("\nLa letra es: ",l)
-
-    #Matriz de palavras de los jugadores
-    matrizPalavras=[]
-    #Lista de puntos de los jugadores
+def jugar(numJugadores):
+    letra = random.choice(string.ascii_uppercase)
+    print '\nLa letra es: ',letra
+    matrizPalavras = np.arange(7*numJugadores).reshape(numJugadores, 7)
     listaPuntos=[]
-    #Impresion de la lista de puntos de los jugadores
-    for puntos in range(listaPuntos):
-        pprint.pprint(listaPuntos)
-        #Verificar si la pontuacion es mayor que 200
-
-    #Loops para ingresar las palabras de cada letra
-    for x in range(0,n):
-        print("\nJUGADOR ",x)
+    for x in range(0,numJugadores):
+        print "\nJUGADOR ",x
         linea=[]
         for y in range(0,7):
             linea.append(recibePalabra(y))
         matrizPalavras.append(linea)
-
-    contaPuntos(matriz)
-
-    #Impresion de la matriz(verificar)
-    pprint.pprint(matriz)
+    contaPuntos(matrizPalavras)
+    print(matrizPalavras)
 
 
-def recibePalabra(n):#n->la categoria conforme la posicion de la matriz
-    c=""#Categorias
-    if(n==0):
-        c="Ingrese el nombre de uma persona: "
-    if(n==1):
-        c="Ingrese una color: "
-    if(n==2):
-        c="Ingrese un animal: "
-    if(n==3):
-        c="Ingrese una comida: "
-    if(n==4):
-        c="Ingrese una flor: "
-    if(n==5):
-        c="Ingrese una fruta: "
-    if(n==6):
-        c="Ingrese un país: "
-    t=input(c)
-    if(t[0].upper()!=l):#Verificacion de la letra inicial de la palabra ingresada
-        t=""
+def recibePalabra(numCategoria):
+    txtCategoria=""
+    if(numCategoria==0):
+        txtCategoria="Ingrese el nombre de uma persona: "
+    if(numCategoria==1):
+        txtCategoria="Ingrese una color: "
+    if(numCategoria==2):
+        txtCategoria="Ingrese un animal: "
+    if(numCategoria==3):
+        txtCategoria="Ingrese una comida: "
+    if(numCategoria==4):
+        txtCategoria="Ingrese una flor: "
+    if(numCategoria==5):
+        txtCategoria="Ingrese una fruta: "
+    if(numCategoria==6):
+        txtCategoria="Ingrese un pais: "
+    palabra = input(txtCategoria)
+    return palabra
 
 
 def contaPuntos(matrizPalavras):#contagen de los puntos
@@ -84,9 +83,8 @@ def contaPuntos(matrizPalavras):#contagen de los puntos
         for y in range(x):
             for i in range(matrizPalavras):
                 for j in range(i):
-                    print(a)
-
-
+                    #if(matrizPalavras[][]==matrizPalavras[][])
+                    print("a")
     return listaPuntos
 
 
