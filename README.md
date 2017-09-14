@@ -1,6 +1,8 @@
 # Python-Study
 
-Links: 
+python -m pytest <nombre_del_programa>.py
+
+Links:
 
 * Learn Python: https://learnxinyminutes.com/docs/python/
 
