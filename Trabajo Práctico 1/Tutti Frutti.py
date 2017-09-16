@@ -1,12 +1,11 @@
 #Bibliotecas
 import random
 import string
-import os
-import numpy as np
-#intalar biblioteca numpy
+import os #executar somente en linux
+import numpy #biblioteca manipulacion de matrices
 #instalar biblioteca pytest
 
-
+#Finalizada
 def menu():
     numJugadores = 2
     opcion = 0
@@ -14,7 +13,7 @@ def menu():
         os.system('clear')
         print '\nTUTTI FRUTTI'
         print '\n',numJugadores,' Jugadores'
-        print '\n[1] Cantidad de Jugadores'
+        print '\n[1] Cambiar Cantidad de Jugadores'
         print '[2] Jugar'
         print '[3] Salir'
         opcion=int(input("Selecione una opcion: "))
@@ -26,6 +25,28 @@ def menu():
             quit()
 
 
+def jugar(numJugadores):
+    listaPuntos=[]
+    listaLetras=[]
+    for jugadores in range(0,numJugadores):
+        listaPuntos.append(0)
+
+    while(max(listaPuntos)<200):
+        letra = eligeLetra(listaPuntos)
+        listaLetras.append(letra)
+
+        matrizPalavras=[]
+        for jugadores in range(0,numJugadores+1):
+            print '\nJUGADOR ',jugadores
+            linea=[]
+            for numCategoria in range(0,7):
+                linea.append(recibePalabra(numCategoria))
+            matrizPalavras.append(linea)
+
+        contaPuntos(matrizPalavras)
+        #print(matrizPalavras)
+
+#Finalizada
 def cambiaNumeroJugadores():
     numJugadores=2
     try:
@@ -39,42 +60,36 @@ def cambiaNumeroJugadores():
         pass
     return numJugadores
 
+#Finalizada
+def eligeLetra(listaLetrasAnteriores):
+    nuevaLetra = random.choice(string.ascii_uppercase)
+    repetida = False
+    for letraAnterior in (listaLetrasAnteriores):
+        if(letraAnterior == nuevaLetra):
+            repetida = True
+    if(repetida == False):
+        print '\nLa letra es: ',nuevaLetra
+        return nuevaLetra
 
-def jugar(numJugadores):
-    letra = random.choice(string.ascii_uppercase)
-    print '\nLa letra es: ',letra
-    matrizPalavras = np.arange(7*numJugadores).reshape(numJugadores, 7)
-    listaPuntos=[]
-    for x in range(0,numJugadores):
-        print "\nJUGADOR ",x
-        linea=[]
-        for y in range(0,7):
-            linea.append(recibePalabra(y))
-        matrizPalavras.append(linea)
-    contaPuntos(matrizPalavras)
-    print(matrizPalavras)
-
-
+#Finalizada
 def recibePalabra(numCategoria):
-    txtCategoria=""
     if(numCategoria==0):
-        txtCategoria="Ingrese el nombre de uma persona: "
+        txtCategoria = 'Ingrese el nombre de una persona: '
     if(numCategoria==1):
-        txtCategoria="Ingrese una color: "
+        txtCategoria = 'Ingrese una color: '
     if(numCategoria==2):
-        txtCategoria="Ingrese un animal: "
+        txtCategoria = 'Ingrese un animal: '
     if(numCategoria==3):
-        txtCategoria="Ingrese una comida: "
+        txtCategoria = 'Ingrese una comida: '
     if(numCategoria==4):
-        txtCategoria="Ingrese una flor: "
+        txtCategoria = 'Ingrese una flor: '
     if(numCategoria==5):
-        txtCategoria="Ingrese una fruta: "
+        txtCategoria = 'Ingrese una fruta: '
     if(numCategoria==6):
-        txtCategoria="Ingrese un pais: "
-    palabra = input(txtCategoria)
-    return palabra
+        txtCategoria = 'Ingrese un pais: '
+    return str(input(txtCategoria))
 
-
+'''
 def contaPuntos(matrizPalavras):#contagen de los puntos
     listaPuntos=[]
     #Contagen de los puntos de cada jugadores
@@ -86,6 +101,6 @@ def contaPuntos(matrizPalavras):#contagen de los puntos
                     #if(matrizPalavras[][]==matrizPalavras[][])
                     print("a")
     return listaPuntos
-
+'''
 
 menu()#llamada del juego en el terminal
