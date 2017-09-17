@@ -34,7 +34,7 @@ def jugar(numJugadores):
     listaLetras = []
 
     if(0==0):
-    #while(max(listaPuntos)<200):
+    while(max(listaPuntos)<200):
         os.system('clear')
 
         #Elige la letra para la rodada
@@ -48,21 +48,47 @@ def jugar(numJugadores):
         imprimeMatriz(matrizPalabras,numJugadores)
 
         #Conta los puntos de cada jugador
-        listaPuntos = contarPuntos(matrizPalabras,numJugadores)
+        listaPuntos = contarPuntos(matrizPalabras,numJugadores,letra)
 
     #Comando para el ganador:
-    #...
+    for jugador in range(0,numJugadores):
+        if(listaPuntos[jugador] >= 200):
+            
 
 
-def contarPuntos(matrizPalabras,numJugadores):#contagen de los puntos
-    listaPuntos=[]
+
+def contarPuntos(matrizPalabras,numJugadores,letra):#contagen de los puntos
+    listaPuntos = [0] * numJugadores
+
     #Contagen de los puntos de cada jugadores
-    #Sumando los puntos obtenidos antes
     for jugador in range(0,numJugadores):
         for numCategoria in range(7):
-            for jugadorComp in range(0,numJugadores):
-                if(matrizPalabras[numCategoria][jugador] == matrizPalabras[numCategoria][jugadorComp]):
-                    print("a")
+
+            #Palabras con la letra incorecta
+            if(letra.lower() == (matrizPalabras[numCategoria][jugador])[0].lower()):
+                matrizPalabras[numCategoria][jugador] = ''
+
+            #Exclue palabras no completadas
+            if(matrizPalabras[numCategoria][jugador] != ''):
+                #Conta las palabras iguales
+                palabrasIguales = 0
+                #Verifica si sólo un jugador tiene palabras
+                palabraSola = True
+
+                for jugadorComp in range(0,numJugadores):
+                    if(matrizPalabras[numCategoria][jugador] == matrizPalabras[numCategoria][jugadorComp]):
+                        contPalIguales = contPalIguales + 1
+                    if (jugador != jugadorComp) and (matrizPalabras[numCategoria][jugadorComp] != ''):
+                        palabraSola = False
+
+                if(palabraSola == True):
+                    listaPuntos[jugador] = listaPuntos[jugador] + 20
+                else:
+                    if(contPalIguales == 1):
+                        listaPuntos[jugador] = listaPuntos[jugador] + 10
+                    else:
+                        listaPuntos[jugador] = listaPuntos[jugador] + 5
+
 
     return listaPuntos
 
