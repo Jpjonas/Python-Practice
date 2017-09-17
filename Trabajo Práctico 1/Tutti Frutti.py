@@ -6,6 +6,15 @@ import os #executar somente en linux
 
 #Finalizada
 def menu():
+    #Representamos millas, pies, pulgadas y metros como números
+ #convierteAMetros: Float -> Float -> Float -> Float
+ #El primer parámetro representa una longitud en millas,
+ #el segundo en pies, el tercero en pulgadas y, el valor de
+ #retorno representa su equivalente en metros.
+ #entrada: 1, 0, 0; salida: 1609.344
+ #entrada: 0, 1, 0; salida: 0.3048
+ #entrada: 0, 0, 1; salida: 0.0254
+ #entrada: 1, 1, 1; salida: 1609.6742
     numJugadores = 2
     opcion = 0
     while(opcion!=3):
@@ -28,12 +37,15 @@ def menu():
             quit()
 
 
+
+
+
 def jugar(numJugadores):
     listaPuntos = [0] * numJugadores
     print(listaPuntos)
     listaLetras = []
 
-    if(0==0):
+    #if(0==0):
     while(max(listaPuntos)<200):
         os.system('clear')
 
@@ -50,33 +62,37 @@ def jugar(numJugadores):
         #Conta los puntos de cada jugador
         listaPuntos = contarPuntos(matrizPalabras,numJugadores,letra)
 
+        #Imprime la lista de puntos
+        for jugador in range(0,numJugadores):
+            print('JUGADOR ', jugador+1,listaPuntos[jugador],' puntos')
+
+        input()
+
     #Comando para el ganador:
     for jugador in range(0,numJugadores):
         if(listaPuntos[jugador] >= 200):
-            
+            print('Jugador ',jugador,' ganou!')
+            input('Precione Enter para finalizar')
 
 
-
-def contarPuntos(matrizPalabras,numJugadores,letra):#contagen de los puntos
+#testes
+def contarPuntos(matrizPalabras,numJugadores,letra):
     listaPuntos = [0] * numJugadores
-
     #Contagen de los puntos de cada jugadores
     for jugador in range(0,numJugadores):
         for numCategoria in range(7):
-
             #Palabras con la letra incorecta
-            if(letra.lower() == (matrizPalabras[numCategoria][jugador])[0].lower()):
+            if(letra == matrizPalabras[numCategoria][jugador][0].upper()):
                 matrizPalabras[numCategoria][jugador] = ''
-
             #Exclue palabras no completadas
             if(matrizPalabras[numCategoria][jugador] != ''):
                 #Conta las palabras iguales
-                palabrasIguales = 0
+                contPalIguales = 0
                 #Verifica si sólo un jugador tiene palabras
                 palabraSola = True
 
                 for jugadorComp in range(0,numJugadores):
-                    if(matrizPalabras[numCategoria][jugador] == matrizPalabras[numCategoria][jugadorComp]):
+                    if(matrizPalabras[numCategoria][jugador] == matrizPalabras[numCategoria][jugadorComp]) and (jugador != jugadorComp):
                         contPalIguales = contPalIguales + 1
                     if (jugador != jugadorComp) and (matrizPalabras[numCategoria][jugadorComp] != ''):
                         palabraSola = False
@@ -84,14 +100,19 @@ def contarPuntos(matrizPalabras,numJugadores,letra):#contagen de los puntos
                 if(palabraSola == True):
                     listaPuntos[jugador] = listaPuntos[jugador] + 20
                 else:
-                    if(contPalIguales == 1):
+                    if(contPalIguales == 0):
                         listaPuntos[jugador] = listaPuntos[jugador] + 10
                     else:
                         listaPuntos[jugador] = listaPuntos[jugador] + 5
 
-
     return listaPuntos
 
+def test_contarPuntos():
+    #Función de prueba de la función fmaximo
+    assert fmaximo(3,4) == 4
+    assert fmaximo(-4,92) == 92
+    assert fmaximo(-10,2) == 2
+    assert fmaximo(-5,72) == 72
 
 #Finalizada (cambiar hola)
 def populaMatriz(numJugadores):
@@ -108,6 +129,14 @@ def populaMatriz(numJugadores):
             matrizPalabras[numCategoria][jugador] = 'hola'
     return matrizPalabras
 
+def test_populaMatriz():
+    #Función de prueba de la función fmaximo
+    assert fmaximo(3,4) == 4
+    assert fmaximo(-4,92) == 92
+    assert fmaximo(-10,2) == 2
+    assert fmaximo(-5,72) == 72
+
+
 #Finalizada
 def imprimeMatriz(matrizPalabras,numJugadores):
     #Imprime la matriz
@@ -118,8 +147,6 @@ def imprimeMatriz(matrizPalabras,numJugadores):
         for numCategoria in range(0,7):
             #Recibe la palabra del jugador
             print('\n',matrizPalabras[numCategoria][jugador])
-
-    input('Enter pra continuar')
 
 #Finalizada
 def cambiaNumeroJugadores():
@@ -135,6 +162,14 @@ def cambiaNumeroJugadores():
         pass
     return numJugadores
 
+def test_cambiaNumeroJugadores():
+    #Función de prueba de la función fmaximo
+    assert fmaximo(3,4) == 4
+    assert fmaximo(-4,92) == 92
+    assert fmaximo(-10,2) == 2
+    assert fmaximo(-5,72) == 72
+
+
 #Finalizada
 def eligeLetra(listaLetrasAnteriores):
     nuevaLetra = random.choice(string.ascii_uppercase)
@@ -145,6 +180,14 @@ def eligeLetra(listaLetrasAnteriores):
     if(repetida == False):
         print('\nLa letra es: ',nuevaLetra)
         return nuevaLetra
+
+def test_eligeLetra():
+    #Función de prueba de la función fmaximo
+    assert fmaximo(3,4) == 4
+    assert fmaximo(-4,92) == 92
+    assert fmaximo(-10,2) == 2
+    assert fmaximo(-5,72) == 72
+
 
 #Finalizada
 def recibePalabra(numCategoria):
@@ -163,6 +206,14 @@ def recibePalabra(numCategoria):
     if(numCategoria==6):
         txtCategoria = 'Ingrese un pais: '
     return input(txtCategoria)
+
+def test_contarPuntos():
+    #Función de prueba de la función fmaximo
+    assert fmaximo(3,4) == 4
+    assert fmaximo(-4,92) == 92
+    assert fmaximo(-10,2) == 2
+    assert fmaximo(-5,72) == 72
+
 
 
 
